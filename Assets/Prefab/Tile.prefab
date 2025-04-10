@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 943189193621086790}
   - component: {fileID: 7854432118351330507}
   - component: {fileID: 2026492246973271457}
+  - component: {fileID: 5541846477935898556}
   m_Layer: 5
   m_Name: Tile
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3
+--- !u!114 &5541846477935898556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590416934563492103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744b86e6ea3374c4aa0e1a94e9db07f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5901419192387041838
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,15 +156,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4115944fcfbdf824c9dcaa1ca35c0653, type: 2}
-  m_sharedMaterial: {fileID: -4208629146867627408, guid: 4115944fcfbdf824c9dcaa1ca35c0653, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1ff0641b39e029f4295159b2a9a759c4, type: 2}
+  m_sharedMaterial: {fileID: -4893798148339685319, guid: 1ff0641b39e029f4295159b2a9a759c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283771836
-  m_fontColor: {r: 0.9245283, g: 0.8320755, b: 0.8588549, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
