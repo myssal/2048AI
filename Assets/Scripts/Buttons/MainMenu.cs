@@ -13,4 +13,9 @@ public class NewBehaviourScript : MonoBehaviour
 		SceneManager.LoadScene(sceneName);
 		Debug.Log("Navigating to " + sceneName);
 	}
+
+	public void Awake()
+	{
+		Debug.Log("It's loaded.");
+	}
 }

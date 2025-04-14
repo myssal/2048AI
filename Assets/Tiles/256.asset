@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c4cbfc94ccb0b4ba736f66f55926d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6da7eb619f13b9e438623a1594a8013d, type: 3}
   m_Name: 256
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 0.92941177, g: 0.8, b: 0.38431373, a: 0}
-  textColor: {r: 0.46666667, g: 0.43137255, b: 0.39607844, a: 0}
+  backgroundColor: {r: 0.92941177, g: 0.8, b: 0.38431373, a: 1}
+  textColor: {r: 0.9764706, g: 0.9647059, b: 0.9490196, a: 1}
+  number: 256
