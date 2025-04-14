@@ -97,11 +97,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(Fade(gameOver, 1f, 1f));
     }
-
-    public void SpawnConfirm()
-    {
-
-    }
+    
 
     private IEnumerator Fade(CanvasGroup canvasGroup, float to, float delay = 0f)
     {

@@ -33,12 +33,21 @@ public class TileBoard : MonoBehaviour
     public void CreateTile()
     {
         Tile tile = Instantiate(tilePrefab, grid.transform);
-        tile.SetState(tileStates[0]);
-        tile.Spawn(grid.GetRandomEmptyCell());
+        if (RandomPercentage(90f))
+		{
+			tile.SetState(tileStates[0]);
+		}
+		else
+		{
+			tile.SetState(tileStates[1]);
+		}
+		tile.Spawn(grid.GetRandomEmptyCell());
         tiles.Add(tile);
     }
 
-    private void Update()
+    public bool RandomPercentage(float percentage) => Random.Range(0f, 100f) < percentage;
+
+	private void Update()
     {
         if (waiting) return;
 
