@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TileBoard board;
     [SerializeField] private CanvasGroup gameOver;
+    [SerializeField] private CanvasGroup gameWin;
     [SerializeField] private Canvas start;
     [SerializeField] private Canvas game;
     [SerializeField] private Canvas tutorial;
@@ -79,9 +80,12 @@ public class GameManager : MonoBehaviour
         SetScore(0);
         hiscoreText.text = LoadHiscore().ToString();
 
-        // hide game over screen
+        // hide game over and win screen
         gameOver.alpha = 0f;
         gameOver.interactable = false;
+
+        gameWin.alpha = 0f;
+        gameWin.interactable = false;
         
         // update board state
         board.ClearBoard();
@@ -97,7 +101,19 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(Fade(gameOver, 1f, 1f));
     }
-    
+
+    public void GameWin()
+    {
+        board.enabled = false;
+        gameWin.interactable = true;
+
+        StartCoroutine(Fade(gameWin, 1f, 1f));
+    }
+
+    public void SpawnConfirm()
+    {
+
+    }
 
     private IEnumerator Fade(CanvasGroup canvasGroup, float to, float delay = 0f)
     {
@@ -145,5 +161,5 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    
 }

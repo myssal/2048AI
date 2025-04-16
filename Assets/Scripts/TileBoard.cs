@@ -7,7 +7,7 @@ public class TileBoard : MonoBehaviour
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private TileState[] tileStates;
 
-    private TileGrid grid;
+    public TileGrid grid;
     private List<Tile> tiles;
     private bool waiting;
 
@@ -33,36 +33,53 @@ public class TileBoard : MonoBehaviour
     public void CreateTile()
     {
         Tile tile = Instantiate(tilePrefab, grid.transform);
-        if (RandomPercentage(90f))
-		{
-			tile.SetState(tileStates[0]);
-		}
-		else
-		{
-			tile.SetState(tileStates[1]);
-		}
-		tile.Spawn(grid.GetRandomEmptyCell());
+        tile.SetState(tileStates[0]);
+        tile.Spawn(grid.GetRandomEmptyCell());
         tiles.Add(tile);
     }
 
-    public bool RandomPercentage(float percentage) => Random.Range(0f, 100f) < percentage;
-
-	private void Update()
+    private void Update()
     {
         if (waiting) return;
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
             Move(Vector2Int.up, 0, 1, 1, 1);
-        } else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
             Move(Vector2Int.left, 1, 1, 0, 1);
-        } else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
             Move(Vector2Int.down, 0, 1, grid.Height - 2, -1);
-        } else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
+		} else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
             Move(Vector2Int.right, grid.Width - 2, -1, 0, 1);
-        }
+		}
     }
 
-    private void Move(Vector2Int direction, int startX, int incrementX, int startY, int incrementY)
+    private void LogState(string state)
+    {
+        string gridOutput = $"{state}:\n";
+        Debug.Log(tiles.Count);
+        for (int row = 0; row < 4; row++)
+        {
+            for (int col = 0; col < 4; col++)
+            {
+                int index = row * 4 + col;		               
+				// Customize this part based on what you want to show per tile
+				if (tiles[index] != null)
+				{
+					gridOutput += $"{tiles[index].state.number} ";
+                    Debug.Log(tiles[index].state.number);
+				}
+				else
+				{
+					gridOutput += "0 ";
+				}
+			}
+            gridOutput += "\n";
+        }
+
+        Debug.Log(gridOutput);
+    }
+
+	public void Move(Vector2Int direction, int startX, int incrementX, int startY, int incrementY)
     {
         bool changed = false;
 
@@ -162,7 +179,19 @@ public class TileBoard : MonoBehaviour
         if (CheckForGameOver()) {
             GameManager.Instance.GameOver();
         }
-    }
+	}
+
+    public bool CheckForGameWin()
+    {  
+       foreach (var t in tileStates)
+		{
+			if (t.number == 2048)
+			{
+				return true;
+			}
+		}
+        return false;
+	}
 
     public bool CheckForGameOver()
     {
