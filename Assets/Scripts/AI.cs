@@ -11,6 +11,7 @@ public class AI : MonoBehaviour
 	private const int MAX_NODES = 10000;
 	private const float HUGE_PENALTY = -1e20f;
 	private bool disableCheck = false;
+
 	private void Awake()
 	{
 		grid = new int[4, 4];
@@ -29,7 +30,7 @@ public class AI : MonoBehaviour
 
 	private IEnumerator AutoSolveCoroutine()
 	{
-		while (!isStop)
+		while (true)
 		{
 			UpdateGridState();
 			
