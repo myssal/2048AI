@@ -179,13 +179,18 @@ public class TileBoard : MonoBehaviour
         if (CheckForGameOver()) {
             GameManager.Instance.GameOver();
         }
+
+		if (CheckForGameWin())
+		{
+			GameManager.Instance.GameWin();
+		}
 	}
 
     public bool CheckForGameWin()
     {  
-       foreach (var t in tileStates)
+       foreach (var t in tiles)
 		{
-			if (t.number == 2048)
+			if (t.state.number == 2048)
 			{
 				return true;
 			}
