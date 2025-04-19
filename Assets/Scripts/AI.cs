@@ -10,7 +10,7 @@ public class AI : MonoBehaviour
 	private int maxDepth = 3;
 	private const int MAX_NODES = 10000;
 	private const float HUGE_PENALTY = -1e20f;
-
+	private bool disableCheck = false;
 	private void Awake()
 	{
 		grid = new int[4, 4];
@@ -22,31 +22,39 @@ public class AI : MonoBehaviour
 		StartCoroutine(AutoSolveCoroutine());
 	}
 
+	public void SetContinueAfter2048()
+	{
+		disableCheck = true;
+	}
+
 	private IEnumerator AutoSolveCoroutine()
 	{
-		while (true)
+		while (!isStop)
 		{
 			UpdateGridState();
 			
-			// Check if 2048 tile exists
-			bool has2048 = false;
-			for (int y = 0; y < 4; y++)
+			if (!disableCheck)
 			{
-				for (int x = 0; x < 4; x++)
+				// Check if 2048 tile exists
+				bool has2048 = false;
+				for (int y = 0; y < 4; y++)
 				{
-					if (grid[x, y] == 2048)
+					for (int x = 0; x < 4; x++)
 					{
-						has2048 = true;
-						break;
+						if (grid[x, y] == 2048)
+						{
+							has2048 = true;
+							break;
+						}
 					}
+					if (has2048) break;
 				}
-				if (has2048) break;
-			}
-			
-			if (has2048)
-			{
-				Debug.Log("2048 tile reached! Auto-solve stopped.");
-				break;
+
+				if (has2048)
+				{
+					Debug.Log("2048 tile reached! Auto-solve stopped.");
+					break;
+				}
 			}
 			
 			StartSearch();

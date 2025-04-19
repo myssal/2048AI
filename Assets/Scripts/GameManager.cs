@@ -92,7 +92,8 @@ public class GameManager : MonoBehaviour
         board.CreateTile();
         board.CreateTile();
         board.enabled = true;
-    }
+        board.continueAfter2048 = false;
+	}
 
     public void GameOver()
     {
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
 		gameWin.interactable = false;
 
         board.enabled = true;
+        board.continueAfter2048 = true;
 	}
 
     private IEnumerator Fade(CanvasGroup canvasGroup, float to, float delay = 0f)

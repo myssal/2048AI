@@ -10,8 +10,9 @@ public class TileBoard : MonoBehaviour
     public TileGrid grid;
     private List<Tile> tiles;
     private bool waiting;
+    public bool continueAfter2048 = false;
 
-    private void Awake()
+	private void Awake()
     {
         grid = GetComponentInChildren<TileGrid>();
         tiles = new List<Tile>(16);
@@ -190,7 +191,7 @@ public class TileBoard : MonoBehaviour
     {  
        foreach (var t in tiles)
 		{
-			if (t.state.number == 2048)
+			if (t.state.number == 2048 && !continueAfter2048)
 			{
 				return true;
 			}
