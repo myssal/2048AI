@@ -54,7 +54,7 @@ public class AI : MonoBehaviour
 			if (bestOperation != -1)
 			{
 				ExecuteMove(bestOperation);
-				yield return new WaitForSeconds(0.08f);
+				yield return new WaitForSeconds(0.04f);
 			}
 			else
 			{

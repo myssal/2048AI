@@ -110,10 +110,17 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Fade(gameWin, 1f, 1f));
     }
 
-    public void SpawnConfirm()
+    public void Continue()
     {
+		// hide game over and win screen
+		gameOver.alpha = 0f;
+		gameOver.interactable = false;
 
-    }
+		gameWin.alpha = 0f;
+		gameWin.interactable = false;
+
+        board.enabled = true;
+	}
 
     private IEnumerator Fade(CanvasGroup canvasGroup, float to, float delay = 0f)
     {
