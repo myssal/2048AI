@@ -47,4 +47,8 @@
     + `float Estimate()`: heuristic evaluation function by calculate total score of the the grid and the smoothness of it.
     + `float Search()`: recursive simulate move. Use expectimax algorithm. It try out all four direction, check for validity and calculate average expected score.~~
 
+## Credit:
+- 2048 unity project: [Zigurous](https://www.youtube.com/watch?v=4NFZwPhqeRs&t=1447s).
+- AI article: [SleepCoder's Blog](https://sleepycoder.github.io/2014/04/01/2048-ai/).
+
 
